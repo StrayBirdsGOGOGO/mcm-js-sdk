@@ -765,11 +765,6 @@ User.verify({"email":email, "language":"zh_CN", "username":username},function(re
 .reset({params}, callback(ret, err))
 
 ####params
-id：
-
-- 类型：字符串
-- 默认值：无
-- 描述：用户id
 
 email：
 
@@ -806,7 +801,7 @@ err：
 ```js
 var User = client.Factory("user");
 
-User.reset({"id":id,"email":email, "language":"zh_CN", "username":username,access_token:token},function(ret,err){
+User.reset({"email":email, "language":"zh_CN", "username":username},function(ret,err){
     console.log("reset ret:\t"+JSON.stringify(ret))
 })
 ```
