@@ -32,7 +32,7 @@ function Resource(appId, appKey, baseurl) {
         'save': {method: 'POST',params: ["_id", "_relation"]}, //_relationid 后续支持
         'query': {method: 'GET',params: ["filter"]},
         'delete': {method: 'DELETE',params: ["_id", "_relation"]}, //_relationid 后续支持
-        'login': {method: "POST",params: ["username", "passwordd"]},
+        'login': {method: "POST",params: ["username", "password"]},
         'logout': {method: "POST"},
         'count': {method: "GET",params: ["_id", "_relation","filter"]},
         'exists': {method: "GET",params: ["_id"]},
