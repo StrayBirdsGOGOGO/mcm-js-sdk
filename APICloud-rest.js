@@ -224,7 +224,7 @@ Route.prototype = {
                 delete params[ckey];
             } else {
                 if (ckey == "filter") {
-                    parArr.push(ckey + "=" + encodeURIComponent(JSON.stringify(params[ckey])));
+                    parArr.push(ckey + "=" + JSON.stringify(params[ckey]));
                 }
             }
         });
