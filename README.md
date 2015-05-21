@@ -828,3 +828,100 @@ Model.query({filter：{
 ```
 
 fields、limit、order、skip、where、include、includefilter相关参数请参考[云api文档](http://docs.apicloud.com/%E4%BA%91API/data-cloud-api#6)
+
+##批量查询
+
+.batch(requests,callback(ret,err))
+
+**提示**
+batch为全局函数,即只能在Resouce对象上调用
+
+**示例**
+
+```js
+var client = new Resource("appId", "appKey");
+client.batch()
+```
+
+####requests
+- 类型：JSON对象数组
+- 描述：每个对象是一个请求信息
+
+**示例** 
+
+
+method为POST、PUT的时候需要在body内传值,为GET的时候不需要传递body
+path路径为相对路径
+
+**GET**
+```js
+{
+    "method": "GET",
+    "path": "/mcm/api/company",
+}
+```
+
+**POST**
+```js
+{
+    "method": "POST",
+    "path": "/mcm/api/company",
+    "body": {
+      "name": "apicloud",
+      "address": "北京市..."
+    }
+}
+```
+
+####callback(ret, err)
+
+ret：
+
+- 类型：JSON对象
+- 描述：成功信息
+
+err：
+
+- 类型：JSON对象
+- 描述：错误信息
+
+####示例代码
+
+```js
+var requests=[
+    {
+        "method": "GET",
+        "path": "/mcm/api/company",
+    },
+    {
+        "method": "POST",
+        "path": "/mcm/api/company",
+        "body": {
+          "name": "apicloud",
+          "address": "北京市..."
+        }
+    }
+]
+client.batch(requests, function (ret,err) {
+  console.log("batch:"+JSON.stringify(ret))
+  console.log("batch:"+JSON.stringify(err))
+});
+
+```
+
+返回ret结果为一个顺序数组
+
+```js
+[
+ {
+    //request 1的结果 
+ },
+ [
+    //request 2的结果
+ ],
+ ...
+ {
+     //request N的结果
+ }   
+]
+```

@@ -48,6 +48,22 @@ function Resource(appId, appKey, baseurl) {
 Resource.prototype.setHeaders=function(key,value){
     this.headers[key]=value;
 }
+Resource.prototype.batch=function(requests,callback){
+    var ajaxConfig={
+        url: this.baseurl+"/batch",
+        method: "POST",
+        data: {
+            body:JSON.stringify({requests:requests})
+        }
+    }
+    ajaxConfig["headers"] = {};
+    for(var header in this.headers){
+        ajaxConfig["headers"][header]=this.headers[header];
+    }
+    api.ajax(ajaxConfig, function (ret,err) {
+        callback(ret, err)
+    });
+}
 Resource.prototype.upload = function (modelName,isFilter, filepath, params, callback) {
     if (typeof params == "function") {
         callback = params;
