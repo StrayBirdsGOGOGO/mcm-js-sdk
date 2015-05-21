@@ -541,11 +541,11 @@ Model.count({"_id":"xxxxxxxxxxxxxx","_relation":"many"}, function (ret,err) {
 });
 ```
 
-###**查询**
+###**获取**
 
-查找对象某关系列下对应的所有数据
+获取对象某关系列下对应的所有数据
 
-.query({params}, callback(ret, err))
+.get({params}, callback(ret, err))
 
 ####params
 
@@ -579,7 +579,7 @@ err：
 
 var Model = client.Factory("modelName");
 
-Model.query({"_id":"xxxxxxxxxxxxxx","_relation":"many"}, function (ret,err) {
+Model.get({"_id":"xxxxxxxxxxxxxx","_relation":"many"}, function (ret,err) {
   console.log("Model count:"+JSON.stringify(ret))
   console.log("Model count:"+JSON.stringify(err))
 });
